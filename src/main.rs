@@ -14,7 +14,7 @@ fn main() {
     }
 
     let r = 250; // 1101
-    let x = 300; // 0010
+    let x = 3000; // 0010
 
     let r_bits: Vec<i64> = (0..16)
         .map(|n| if r & 1<<n !=0 { 1 } else { 0 })
@@ -114,7 +114,7 @@ fn main() {
             .iter()
             .zip(t.iter())
             .zip(a2.iter())
-            .map(|((ri, t), a2)| (((1 - ri) -(t + a2)) % tss.prime + tss.prime))
+            .map(|((ri, t), a2)| (1 - ri - t + a2 + tss.prime)%tss.prime)
             .collect();
             t = a.clone();
             println!("X{} should be {} but is {}",i, 1 - tss.reconstruct(&indices, &r_bit_shares[i]) - tss.reconstruct(&indices, &t) + tss.reconstruct(&indices, &a2), tss.reconstruct(&indices, &xi));
@@ -130,6 +130,6 @@ fn main() {
     x_bit_shares
         .iter()
         .for_each(|share| {
-            println!("{}", tss.reconstruct(&indices, &share));
+            println!("{}", (tss.reconstruct(&indices, &share)+tss.prime)%tss.prime);
         });
 }
