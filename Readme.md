@@ -9,6 +9,6 @@
 3. The parties reveal this sum without revealing anything about the target number.
 4. the parties securely subtract the random number from the revealed number, bit by bit, producing shares of the target number's bits.
 
-After running the protocol, binary-based operations such as secure comparisson, or division by a power of two, can be computed on the bit sharesk
+After running the protocol, binary-based operations such as secure comparisson, or division by a power of two, can be computed on the bit shares.
 
 Uses [Snips.ai's Secret Sharing library](https://github.com/snipsco/rust-threshold-secret-sharing)
